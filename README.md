@@ -5,6 +5,10 @@ filtering.
 - This step depends on what type and quality of variants you want. I worked mostly on population
 genomics with low/ medium coverage per sample. For that reason, I prefer to filter SNPs of high
 quality. However, if you work with mutations, filtering indels can be interesting.
+- Here you MUST use the trimmed files. If you want to check how to trimm adapters and filter read
+quality, check `vlnaraujo/Trimming_and_QC`.
+- You have to use a reference. If you want to check how to assemble HiFi reads, please check
+`vlnaraujo/PACBIO_genome_assemble`. You can also use references from, for example, NCBI Genomes.
 
 ## Pipeline
 
