@@ -9,6 +9,7 @@ quality. However, if you work with mutations, filtering indels can be interestin
 quality, check `vlnaraujo/Trimming_and_QC`.
 - You have to use a reference. If you want to check how to assemble HiFi reads, please check
 `vlnaraujo/PACBIO_genome_assemble`. You can also use references from, for example, NCBI Genomes.
+- To make an ancestry plot and a PCA of the variants in R, check `scripts/sNMF_and_pca.r`.
 
 ## Pipeline
 
@@ -57,8 +58,15 @@ bcftools stats -s - Sample_X.filtered.vcf.gz > Sample_X.filtered.vcfstats.txt
 
 ## Notes
 
-I prefer bcftools over GATK for non-model organisms, since there's no known-sites VCF available
+- I prefer bcftools over GATK for non-model organisms, since there's no known-sites VCF available
 for BQSR and it's considerably lighter to run on a shared HPC. If you go with GATK instead you'll
 need a sequence dictionary (`picard CreateSequenceDictionary`) and `HaplotypeCaller` run per
 sample before joint genotyping with `GenomicsDBImport` / `GenotypeGVCFs`.
-For more details, check  `broadinstitute/gatk`
+For more details, check  [GATK repository](https://github.com/broadinstitute/gatk).
+- There are SEVERAL ways of using the variant vcf file. I ran population dynamics analyses, and
+for that reason, I am including a script for ancestry plotting. You can also run STRUCTURE, if you
+have the same objective. I prefer sNMF over ADMIXTURE, because it reads genotypes with missing data
+natively and doesn't need a PLINK conversion first. If you'd rather use ADMIXTURE,you'll need to
+convert the VCF to PLINK format with `plink2 --vcf Sample_X.filtered.vcf.gz --make-bed --out Sample_X`
+and run ADMIXTURE on that instead.
+- You can also make a phylogenetic network out of the vcf file. I used [SplitsTree](https://uni-tuebingen.de/en/fakultaeten/mathematisch-naturwissenschaftliche-fakultaet/fachbereiche/informatik/lehrstuehle/algorithms-in-bioinformatics/software/splitstree/) .
