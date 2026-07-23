@@ -22,8 +22,8 @@ quality, check `vlnaraujo/Trimming_and_QC`.
 ## Input
 
 - `hifiasm_Sample_X.p_ctg.fasta`: reference assembly
-- `Sample_*_R1.paired.fastq.gz`, `Sample_*_R2.paired.fastq.gz`: trimmed reads, from
-  `02-qc-trimming`, one pair per sample in the `SAMPLES` array
+- `Sample_*_R1.paired.fastq.gz`, `Sample_*_R2.paired.fastq.gz`: trimmed reads, from one pair per sample in
+the `SAMPLES` array
 
 ## Output
 
